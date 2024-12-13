@@ -1,0 +1,36 @@
+.responsive-table {
+    width: 100%;
+  }
+  
+  .responsive-table th {
+    text-align: left;
+  }
+  
+  .responsive-table th.right-align {
+    text-align: right;
+  }
+  
+  @media (max-width: 768px) {
+    .responsive-table th.left-align {
+      text-align: left;
+    }
+  
+    .responsive-table th.right-align {
+      text-align: right;
+    }
+  }
+
+  .center-button:hover {
+    background-color: gray; /* Hover color */
+    color: white; /* Optional: change text color on hover */
+}
+
+.center-button {
+    font-family: 'Petrona', sans-serif;
+    width: 289px;
+    height: 53px;
+    transition: background-color 0.3s;
+}
+
+
+
