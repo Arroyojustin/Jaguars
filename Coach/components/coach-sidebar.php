@@ -5,17 +5,21 @@
     </div>
 
     <nav>
-        <a href="#" class="sidebar-link" onclick="showSection(event, 'home')">
+        <a href="#" class="sidebar-link" onclick="showSection(event, 'coaches')">
             <i class="bx bx-home"></i>
             <span>Home</span>
         </a>
-        <a href="#" class="sidebar-link" onclick="showSection(event, 'history')">
-        <i class='bx bx-history'></i>
-            <span>History</span>
+        <a href="#" class="sidebar-link" onclick="showSection(event, 'required')">
+           <i class="fa-solid fa-clipboard-list x0.3"></i>
+            <span>requirements</span>
         </a>
-        <a href="#" class="sidebar-link" onclick="showSection(event, 'adding')">
-            <i class='bx bx-user-plus'></i>
-            <span>Add Control</span>
+        <a href="#" class="sidebar-link" onclick="showSection(event, 'strong')">
+              <i class="fa-solid fa-person-walking x0.3"></i>
+            <span>Schedule</span>
+        </a>
+        <a href="#" class="sidebar-link" onclick="showSection(event, 'athlete')">
+               <i class="fa-solid fa-users x0.1"></i>
+            <span>List</span>
         </a>
     </nav>
 </div>
@@ -36,7 +40,7 @@
         }
 
         // Hide all sections
-        document.querySelectorAll('#home, #history, #adding, #admin-profile, #add-sport, #add-coor').forEach(section => {
+        document.querySelectorAll('#coaches, #required, #strong, #athlete').forEach(section => {
             section.style.display = 'none';
         });
 
@@ -49,9 +53,9 @@
 
     window.onload = function() {
         // Set the dashboard as the default active section and link
-        showSection(null, 'home'); 
+        showSection(null, 'coaches'); 
 
         // Mark the dashboard link as active on load
-        document.querySelector('a[href="#"][onclick*="home"]').classList.add('active');
+        document.querySelector('a[href="#"][onclick*="coaches"]').classList.add('active');
     };
 </script>

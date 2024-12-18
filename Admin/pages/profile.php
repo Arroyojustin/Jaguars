@@ -1,7 +1,24 @@
-<div class="container-fluid px-3 py-4" id="admin-profile">
+<?php
+// Include the database connection
+include('./../dbconn.php');
+
+
+// Fetch the admin's data based on user ID from the session
+$admin_id = $_SESSION['user_id']; // Assuming the admin's ID is stored in the session
+
+$sql = "SELECT * FROM users WHERE id = ? AND user_type = 'admin'";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $admin_id); // Bind the admin_id parameter
+$stmt->execute();
+$result = $stmt->get_result();
+
+$admin = $result->fetch_assoc(); // Fetch the admin data
+?>
+
+<div class="container-fluid px-3 py-1" id="admin-profile">
     <div class="row g-3">
         <!-- Left Section -->
-        <div class="col-lg-4 col-md-5 bg-light d-flex flex-column align-items-center py-5 text-center border-end">
+        <div class="col-lg-4 col-md-5 bg-light d-flex flex-column align-items-center py-1 text-center border-end">
             <div class="circle-container bg-primary text-white mb-3 d-flex align-items-center justify-content-center"
                  style="width: 120px; height: 120px; border-radius: 50%; font-size: 36px; font-weight: bold;">
                 <span class="initials"><?php echo isset($admin['firstname'][0], $admin['lastname'][0]) ? $admin['firstname'][0] . $admin['lastname'][0] : ''; ?></span>
@@ -9,14 +26,15 @@
             <h5 class="mb-1"><?php echo isset($admin['email']) ? $admin['email'] : ''; ?></h5>
             <ul class="list-unstyled mt-3">
                 <li><a href="#" class="btn btn-link text-decoration-none" id="changePasswordBtn">Change Password</a></li>
-                <li><a href="#" class="btn btn-link text-danger text-decoration-none" id="deleteAccountBtn">Delete Account</a></li>
+                <!-- Add Change Profile Photo option -->
+                <li><a href="#" class="btn btn-link text-decoration-none" id="changeProfilePhotoBtn">Change Profile Photo</a></li>
             </ul>
         </div>
 
         <!-- Right Section -->
-        <div class="col-lg-8 col-md-7 py-4">
+        <div class="col-lg-7 col-md-7 py-2">
             <h4 class="text-secondary">Personal Information</h4>
-            <form id="profileForm" method="POST">
+            <form id="profileForm" method="POST" action="update-admin.php" enctype="multipart/form-data">
                 <!-- Hidden Field for User ID -->
                 <input type="hidden" name="id" value="<?php echo isset($admin['id']) ? $admin['id'] : ''; ?>">
 

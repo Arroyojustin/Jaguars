@@ -6,6 +6,8 @@
     <title>ASIATECH Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Petrona&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./assets/css/login.css">
 </head>
 <body>
@@ -23,10 +25,10 @@
         </div>
         <!-- Right Section with Login Form -->
         <div class="right-section">
-            <form class="login-form">
-                <input type="email" placeholder="Email" required>
+            <form class="login-form" id="loginForm" method="POST" action="">
+                <input type="email" name="email" placeholder="Email" required>
                 <div class="password-container">
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                     <label for="show-password">
                         <input type="checkbox" id="show-password"> Show Password
                     </label>
@@ -36,17 +38,6 @@
         </div>
     </div>
 
-    <script>
-        const showPasswordCheckbox = document.getElementById('show-password');
-        const passwordField = document.getElementById('password');
-
-        showPasswordCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                passwordField.type = 'text';
-            } else {
-                passwordField.type = 'password';
-            }
-        });
-    </script>
+    <script src="login function/crud-ajax/login.js"></script>
 </body>
 </html>

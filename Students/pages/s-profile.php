@@ -1,53 +1,84 @@
 <div class="container-fluid p-0 m-0" id="stud-profile" style="display: none;">
-  <div class="row g-3">
-    <!-- Left Section -->
-    <div class="col-lg-4 col-md-5 bg-light d-flex flex-column align-items-center py-2 text-center border-end">
-        <div class="circle-container bg-primary text-white mb-3 d-flex align-items-center justify-content-center"
-             style="width: 120px; height: 120px; border-radius: 50%; font-size: 36px; font-weight: bold;">
-            <span class="initials"><?php echo isset($student['firstname'][0], $student['lastname'][0]) ? $student['firstname'][0] . $student['lastname'][0] : ''; ?></span>
+    <div class="row">
+        <!-- Profile Picture Section -->
+        <div class="col-md-3 text-center d-flex justify-content-center flex-column align-items-center position-relative">
+            <div class="circle-wrapper mb-3 position-relative">
+                <input type="file" id="profileImage" class="d-none" accept="image/*" onchange="previewImage(event)">
+                <div class="circle position-relative">
+                    <img id="profilePreview" src="<?php echo $user['profile_photo'] ?: 'default-profile.jpg'; ?>" 
+                         alt="" class="rounded-circle" width="200" height="200">
+                </div>
+            </div>
+            <span class="change-profile-text" onclick="document.getElementById('profileImage').click()">Change Profile Photo</span>
+            <h5 class="mb-1"><?php echo isset($coach['email']) ? $coach['email'] : ''; ?></h5>
         </div>
-        <h5 class="mb-1"><?php echo isset($student['email']) ? $student['email'] : ''; ?></h5>
-        <ul class="list-unstyled mt-3">
-            <li><a href="#" class="btn btn-link text-decoration-none" id="changePasswordBtn">Change Password</a></li>
+
+        <div class="col-md-9 col-lg-9">
+            <!-- Form Section -->
+            <div class="px-4 py-4">
+                <h5 class="text-gray-800 fw-bold border-bottom border-dark pb-2 mb-3">Update Student</h5>
+                <form id="updateStudentForm" method="POST" enctype="multipart/form-data">
+                    <!-- Hidden ID field -->
+                    <input type="hidden" name="id" value="<?php echo isset($user['id']) ? $user['id'] : ''; ?>">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control form-control-sm" id="lastName" name="lastName" value="<?php echo isset($user['lastname']) ? $user['lastname'] : ''; ?>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control form-control-sm" id="firstName" name="firstName" value="<?php echo isset($user['firstname']) ? $user['firstname'] : ''; ?>">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="middleInitial" class="form-label">Middle Initial</label>
+                            <input type="text" class="form-control form-control-sm" id="middleInitial" name="middleInitial" value="<?php echo isset($user['middle_initial']) ? $user['middle_initial'] : ''; ?>">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="studentNumber" class="form-label">Student No.</label>
+                            <input type="text" class="form-control form-control-sm" id="studentNumber" name="studentNumber" value="<?php echo isset($user['student_no']) ? $user['student_no'] : ''; ?>">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="weight" class="form-label">Weight (kg)</label>
+                            <input type="number" class="form-control form-control-sm" id="weight" name="weight" value="<?php echo isset($user['weight']) ? $user['weight'] : ''; ?>" step="0.01">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="height" class="form-label">Height (cm)</label>
+                            <input type="number" class="form-control form-control-sm" id="height" name="height" value="<?php echo isset($user['height']) ? $user['height'] : ''; ?>" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="bmi" class="form-label">BMI</label>
+                            <input type="text" class="form-control form-control-sm" id="bmi" name="bmi" value="<?php echo isset($user['bmi']) ? $user['bmi'] : ''; ?>">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="bloodType" class="form-label">Blood Type</label>
+                            <input type="text" class="form-control form-control-sm" id="bloodType" name="bloodType" value="<?php echo isset($user['bloodtype']) ? $user['bloodtype'] : ''; ?>">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select form-select-sm" id="gender" name="gender">
+                                <option value="male" <?php echo (isset($user['gender']) && $user['gender'] == 'male') ? 'selected' : ''; ?>>Male</option>
+                                <option value="female" <?php echo (isset($user['gender']) && $user['gender'] == 'female') ? 'selected' : ''; ?>>Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="emergencyContact" class="form-label">Contact No.</label>
+                            <input type="text" class="form-control form-control-sm" id="emergencyContact" name="emergencyContact" value="<?php echo isset($user['phone_no']) ? $user['phone_no'] : ''; ?>">
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-secondary me-2" onclick="showSection(event, 'homes')">Back</button>
+                        <button type="submit" class="btn btn-outline-success">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <!-- Right Section -->
-    <div class="col-lg-7 col-md-7 py-2">
-        <h4 class="text-secondary">Personal Information</h4>
-        <form id="profileForm" method="POST">
-            <!-- Hidden Field for User ID -->
-            <input type="hidden" name="id" value="<?php echo isset($student['id']) ? $student['id'] : ''; ?>">
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="first_name" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name"
-                        value="<?php echo isset($student['firstname']) ? $student['firstname'] : ''; ?>" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="last_name" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name"
-                        value="<?php echo isset($student['lastname']) ? $student['lastname'] : ''; ?>" required>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email"
-                    value="<?php echo isset($student['email']) ? $student['email'] : ''; ?>" disabled>
-            </div>
-
-            <div class="mb-3">
-                <label for="phone_number" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                    value="<?php echo isset($student['phone_no']) ? $student['phone_no'] : ''; ?>" required>
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center mt-4 gap-3">
-                <button type="submit" class="btn btn-outline-success" id="saveChangesBtn">Save Changes</button>
-                <a href="./varsity.php" class="btn btn-outline-secondary">Back</a>
-            </div>
-        </form>
-    </div>
-  </div>
 </div>

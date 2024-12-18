@@ -14,16 +14,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+header {
     color: #333;
 }
 
-img {
+figure {
     width: 300px;
     height: 200px;
 }
 
-p {
+desc {
     color: #666;
 }
 
@@ -44,7 +44,7 @@ p {
     min-width: 100%;
 }
 
-img {
+figure img {
     width: 100%;
     height: auto;
 }

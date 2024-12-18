@@ -1,4 +1,17 @@
+<?php
+session_start();
 
+// Check if the user is logged in, if not, redirect to login page
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
+    header('Location: ../index.php');
+    exit();
+}
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +28,7 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/admin css/home.css">
     <link rel="stylesheet" href="../assets/css/admin css/datatable.css">
+    <link rel="stylesheet" href="../assets/css/admin css/sports-add.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -62,8 +76,11 @@
                  <!-- Begin Page Content -->
                  <div id="page-content" style="width: 100%;">
                     <?php include "pages/homie.php"; ?>
+                    <?php include "pages/history.php"; ?>
                     <?php include "pages/add_control.php"; ?>
                     <?php include "pages/profile.php"; ?>
+                    <?php include "pages/add-sport.php"; ?>
+                    <?php include "pages/add-coor.php"; ?>
                 </div>
 
             </div>
@@ -83,7 +100,11 @@
     
 
     <!--START::CRUD AJAX FUNCTIONS-->
-    <!-- <script src="./crud-ajax/user-analitics.js"></script> -->
+    <script src="./crud-ajax/add-trigger.js"></script>
+    <script src="./crud-ajax/add-sport.js"></script>
+    <script src="./crud-ajax/chart.js"></script>
+    <script src="./crud-ajax/add-coach.js"></script>
+
 
     
 </body>

@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+// Check if the user is logged in, if not, redirect to login page
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'coordinator') {
+    header('Location: ../index.php');
+    exit();
+}
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +84,7 @@
                     <?php include "pages/home.php"; ?>
                     <?php include "pages/co-profile.php"; ?>
                     <?php include "pages/attendance.php"; ?>
-                    <?php include "pages/sport-add.php"; ?>
+                    <?php include "pages/stud-add.php"; ?>
                     <?php include "pages/student.php"; ?>
                 </div>
             </div>

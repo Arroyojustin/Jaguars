@@ -28,8 +28,8 @@
 
                 <!-- Right section (Action buttons) -->
                 <div class="d-flex">
-                    <button class="btn btn-success btn-sm me-2" aria-label="Edit selected users">Add Coach</button>
-                    <button class="btn btn-success btn-sm" aria-label="Delete selected users">Add Coordinator</button>
+                    <button class="btn btn-success btn-sm me-2" aria-label="Edit selected users" onclick="showSection(event, 'add-sport')">Add Coach</button>
+                    <button class="btn btn-success btn-sm" aria-label="Delete selected users" onclick="showSection(event, 'add-coor')">Add Coordinator</button>
                 </div>
             </div>
         </div>

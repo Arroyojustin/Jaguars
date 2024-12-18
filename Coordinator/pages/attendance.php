@@ -1,3 +1,11 @@
+<?php
+include('./../dbconn.php'); // Include the database connection
+include('controller/attend-cat.php'); // Include the fetchSports.php file
+
+// Call the function to get sports options
+$sportOptions = getSportsOptions($conn);
+?>
+
 <div class="container-fluid p-0 m-0" id="attendance" style="display: none;">
   <!-- Left Section with Attendance Card -->
   <div class="row">
@@ -11,11 +19,9 @@
             </div>
             <div class="col-md-5">
               <div class="input-group">
-              <select id="categorySelect" class="form-select form-select-sm custom-select me-2" aria-label="Select category"> 
-                    <option value="">Categories</option> 
-                    <option value="Category1">Category 1</option> 
-                    <option value="Category2">Category 2</option> 
-                    <option value="Category3">Category 3</option> 
+                <select id="categorySelect" class="form-select form-select-sm custom-select me-2" aria-label="Select category"> 
+                  <option value="" disabled selected>Select a Category</option>
+                    <?php echo $sportOptions; // Populate the dropdown with sports ?>
                 </select>
               </div>
             </div>

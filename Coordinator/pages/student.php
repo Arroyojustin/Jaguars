@@ -1,3 +1,8 @@
+<?php
+// Include the fetch_sports.php file to access the fetch_sports() function
+include('controller/stud-cat.php');
+?>
+
 <div class="container-fluid p-0 m-0" id="list" style="display: none;">
     <!-- Header -->
     <div class="custom-card-header bg-light text-dark">
@@ -17,10 +22,11 @@
                 <!-- Search Input -->
                 <div class="ms-3 flex-shrink-1">
                 <select id="categorySelect" class="form-select form-select-sm custom-select me-2" aria-label="Select category"> 
-                    <option value="">Categories</option> 
-                    <option value="Category1">Category 1</option> 
-                    <option value="Category2">Category 2</option> 
-                    <option value="Category3">Category 3</option> 
+                   <option value="" disabled selected>Select a Category</option> 
+                    <?php
+                    // Call the fetch_sports function to populate the dropdown with sports
+                    fetch_sports(); 
+                    ?>
                 </select>
                 </div>
             </div>
