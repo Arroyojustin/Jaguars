@@ -7,6 +7,8 @@
                 <div class="card shadow-container">
                     <div class="card-body">
                         <h5 class="card-title mb-3" style="border-bottom: 1px solid #000;">Students list</h5>
+                        <!-- Container to display submitted students -->
+                        <div id="requirementsContainer"></div>
                     </div>
                 </div>
             </div>
@@ -16,7 +18,6 @@
                 <div class="card shadow-container">
                     <div class="card-body">
                         <h5 class="card-title mb-3" style="border-bottom: 1px solid #000;">Requirements</h5>
-                        <!-- Removed input, submit, and back button -->
                     </div>
                 </div>
             </div>

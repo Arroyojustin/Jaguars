@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2024 at 06:20 AM
+-- Generation Time: Dec 18, 2024 at 11:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `requirements`
+--
+
+CREATE TABLE `requirements` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `gender` enum('male','female') NOT NULL,
+  `sport_category` varchar(255) NOT NULL,
+  `height` decimal(5,2) NOT NULL,
+  `weight` decimal(5,2) NOT NULL,
+  `bmi` decimal(5,2) NOT NULL,
+  `phone_number` varchar(15) NOT NULL,
+  `health_protocol` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sports`
 --
 
@@ -37,7 +57,8 @@ CREATE TABLE `sports` (
 --
 
 INSERT INTO `sports` (`id`, `sport_name`) VALUES
-(1, 'Basketball');
+(1, 'Basketball'),
+(9, 'volleyball');
 
 -- --------------------------------------------------------
 
@@ -71,11 +92,19 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `lastname`, `firstname`, `middle_initial`, `student_no`, `weight`, `height`, `bmi`, `bloodtype`, `phone_no`, `email`, `password`, `user_type`, `gender`, `civil_status`, `profile_photo`, `sports_id`) VALUES
 (1, 'Lleve', 'Shelalin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin@edu.ph', '$2y$10$2ey6fmYSA4xnxIPVp2qRG.Gqt1k1BdGNF7fvBR1835GpQfSSABtVq', 'admin', 'female', 'married', NULL, NULL),
-(7, 'Perez', 'Jerome', '', NULL, NULL, NULL, NULL, NULL, '', 'coor@edu.ph', '$2y$10$zpyfExl.dISoTv65SkzIzOgQsxw/ON3YgLwjnwRB3osJcuhe3yE6u', 'coordinator', 'male', 'single', NULL, NULL);
+(7, 'Perez', 'Jerome', '', NULL, NULL, NULL, NULL, NULL, '', 'coor@edu.ph', '$2y$10$zpyfExl.dISoTv65SkzIzOgQsxw/ON3YgLwjnwRB3osJcuhe3yE6u', 'coordinator', 'male', 'single', NULL, NULL),
+(19, 'Pablo', 'Lucas', 'g', NULL, NULL, NULL, NULL, NULL, '09068377106', 'admin@edu.ph', '$2y$10$oTCH5JsNxJ3rsTuaz8nYpeiuio/.vAmCz3aCbwLC3Gh8uWrf46.6K', 'coach', 'male', NULL, NULL, 1),
+(20, 'hernandez', 'tania', 'g', NULL, NULL, NULL, NULL, NULL, '09369007677', 'admin@edu.ph', '$2y$10$nmusI3hoZX7s8Y9.YhGKZOLVovcKwZ4KhQzlllSQJ0LRHK0dYRcUG', 'coach', 'male', NULL, NULL, 9);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `requirements`
+--
+ALTER TABLE `requirements`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sports`
@@ -95,16 +124,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `requirements`
+--
+ALTER TABLE `requirements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `sports`
 --
 ALTER TABLE `sports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

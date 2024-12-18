@@ -8,25 +8,9 @@ include('controller/sport-cat.php'); // Include the functions file
         <div class="row">
             <!-- Left Section: Coaches -->
             <div class="col-md-4">
-                <div class="card shadow-container">
+                <div class="card shadow-container mb-4"> <!-- Added mb-4 to add spacing -->
                     <div class="card-body">
-                        <h5 class="card-title underline mb-3" style="border-bottom: 1px solid #000;">Coach Information</h5>
-
-                        <!-- Coach Form -->
-                        <form id="coachForm">
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <label for="coachFirstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="coachFirstName" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <label for="coachLastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="coachLastName" required>
-                                </div>
-                            </div>
-                        </form>
+                        <h5 class="card-title underline mb-3" style="border-bottom: 1px solid #000;">Actions</h5>
                     </div>
                 </div>
 
@@ -34,7 +18,7 @@ include('controller/sport-cat.php'); // Include the functions file
                     <div class="card-body">
                         <h5 class="card-title underline mb-2" style="border-bottom: 1px solid #000;">Student Account</h5>
 
-                        <!-- Coach Form -->
+                        <!-- Student Account Form -->
                         <form id="coachForm">
                             <div class="row mb-3">
                                 <div class="col-md-12">
@@ -48,10 +32,12 @@ include('controller/sport-cat.php'); // Include the functions file
                                     <input type="text" class="form-control" id="coachLastName" required>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-outline-success" id="addStudentButton">Add Student</button>
                         </form>
                     </div>
                 </div>
             </div>
+
 
             <!-- Right Section: Students -->
             <div class="col-md-8">
@@ -95,7 +81,7 @@ include('controller/sport-cat.php'); // Include the functions file
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <label for="height" class="form-label">Height (cm)</label>
-                                    <input type="number" class="form-control" id="height" min="0" step="0.01" required>
+                                 <input type="number" class="form-control" id="height" min="0" step="0.01" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="weight" class="form-label">Weight (kg)</label>
@@ -125,3 +111,31 @@ include('controller/sport-cat.php'); // Include the functions file
         </div>
     </div>
 </div>
+
+<script>
+// Function to calculate BMI
+function calculateBMI() {
+    const height = parseFloat(document.getElementById('height').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const bmiInput = document.getElementById('bmi');
+
+    // Check if both height and weight are provided
+    if (height > 0 && weight > 0) {
+        // Convert height from cm to meters
+        const heightInMeters = height / 100;
+
+        // Calculate BMI
+        const bmi = weight / (heightInMeters * heightInMeters);
+
+        // Set the BMI value to the input field
+        bmiInput.value = bmi.toFixed(2);
+    } else {
+        // If height or weight is invalid, clear the BMI field
+        bmiInput.value = '';
+    }
+}
+
+// Event listeners for height and weight fields to calculate BMI on input change
+document.getElementById('height').addEventListener('input', calculateBMI);
+document.getElementById('weight').addEventListener('input', calculateBMI);
+</script>

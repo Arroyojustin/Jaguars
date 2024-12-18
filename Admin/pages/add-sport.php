@@ -58,9 +58,20 @@
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <label for="sportCategory" class="form-label">Sport Category</label>
-                                    <select class="form-select" id="sportCategory" required>
-                                        <option value="" disabled selected>Select a Category</option>
-                                        <!-- Sports will be dynamically added here -->
+                                    <select name="sportCategory" class="form-control" id="sportCategory" required>
+                                        <?php
+                                        // Fetch sports from the sports table
+                                        $sportQuery = "SELECT sport_name FROM sports";
+                                        $result = $conn->query($sportQuery);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['sport_name'] . "'>" . $row['sport_name'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option value=''>No sports available</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
@@ -102,3 +113,5 @@
         </div>
     </div>
 </div>
+
+

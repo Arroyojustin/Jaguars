@@ -44,7 +44,7 @@ header("Pragma: no-cache");
         #wrapper { display: flex; height: 100vh; margin: 0; padding: 0; }
         #content-wrapper { flex-grow: 1; display: flex; flex-direction: column; background-color: #f8f8f8; }
         #content { padding: 1rem; flex-grow: 1; }
-        #page-content { flex-grow: 1; padding: 10px; }
+        #page-content { flex-grow: 1; padding: 5px; }
 
         #wrapper {
         display: flex;
@@ -105,7 +105,7 @@ header("Pragma: no-cache");
 
     <!--START::CRUD AJAX FUNCTIONS-->
     <script src="function/date-control.js"></script>
-
+    <script src="function/required.js"></script>
     
 
     <!--END::CRUD AJAX FUNCTIONS-->

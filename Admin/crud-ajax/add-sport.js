@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         const sportName = document.getElementById('sport_name').value;
 
-        fetch('controller/add-coach-sport.php', {
+        fetch('controller/add-sport.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ sport_name: sportName })

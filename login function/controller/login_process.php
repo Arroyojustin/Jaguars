@@ -23,14 +23,16 @@ if ($stmt->num_rows > 0) {
         $_SESSION['user_id'] = $userId;
         $_SESSION['email'] = $email;
         $_SESSION['user_type'] = $userType;
-        $_SESSION['sports_id'] = $sportsId; // Store sports_id in session if needed
+        $_SESSION['sports_id'] = $sportsId;
 
         // Redirect based on user type
         if ($userType == 'admin') {
             $redirectUrl = './Admin/Admin.php';
         } elseif ($userType == 'coordinator') {
             $redirectUrl = './Coordinator/coordinator.php';
-        }else {
+        } elseif ($userType == 'coach') {
+            $redirectUrl = './Coach/coach.php'; // Redirect to coach page
+        } else {
             $redirectUrl = '../index.php'; // For undefined user types
         }
 
