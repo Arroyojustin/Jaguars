@@ -6,7 +6,7 @@
             <div class="col-md-6">
                 <div class="card shadow-container">
                     <div class="card-body">
-                        <h5 class="card-title mb-3" style="border-bottom: 1px solid #000;">Students list</h5>
+                        <h5 class="card-title mb-3" style="border-bottom: 1px solid #000;">Requirements</h5>
                         <!-- Container to display submitted students -->
                         <div id="requirementsContainer"></div>
                     </div>
@@ -17,7 +17,10 @@
             <div class="col-md-6">
                 <div class="card shadow-container">
                     <div class="card-body">
-                        <h5 class="card-title mb-3" style="border-bottom: 1px solid #000;">Requirements</h5>
+                        <h5 class="card-title mb-3" style="border-bottom: 1px solid #000;">Information</h5>
+                        <!-- Back Button (X) -->
+                        <!-- This container will hold the student details -->
+                        <div id="studentDetails"></div>
                     </div>
                 </div>
             </div>
