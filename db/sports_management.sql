@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2024 at 11:53 AM
+-- Generation Time: Dec 19, 2024 at 07:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `action`
+--
+
+CREATE TABLE `action` (
+  `id` int(11) NOT NULL,
+  `requirements_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `status` enum('approve','rejected') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `requirements`
 --
 
@@ -40,6 +53,16 @@ CREATE TABLE `requirements` (
   `phone_number` varchar(15) NOT NULL,
   `health_protocol` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `requirements`
+--
+
+INSERT INTO `requirements` (`id`, `first_name`, `last_name`, `student_id`, `gender`, `sport_category`, `height`, `weight`, `bmi`, `phone_number`, `health_protocol`) VALUES
+(1, 'bryan', 'custodio', '1-210134', 'male', 'Basketball', 167.00, 55.00, 19.72, '09369007677', 'none'),
+(3, 'Aaron', 'Tibayan', '1-999999', 'male', 'volleyball', 172.00, 62.00, 20.96, '099999999999', 'mataba lang'),
+(4, 'Justin randolf', 'Arroyo', '1-234567', 'male', 'Basketball', 167.00, 55.00, 19.72, '097264872622', 'None'),
+(5, 'leif', 'nazario', '1-222222', 'male', 'volleyball', 167.00, 57.00, 20.44, '0988888888', 'none');
 
 -- --------------------------------------------------------
 
@@ -101,6 +124,13 @@ INSERT INTO `users` (`id`, `lastname`, `firstname`, `middle_initial`, `student_n
 --
 
 --
+-- Indexes for table `action`
+--
+ALTER TABLE `action`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `requirements_id` (`requirements_id`);
+
+--
 -- Indexes for table `requirements`
 --
 ALTER TABLE `requirements`
@@ -124,10 +154,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `action`
+--
+ALTER TABLE `action`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sports`
@@ -144,6 +180,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `action`
+--
+ALTER TABLE `action`
+  ADD CONSTRAINT `action_ibfk_1` FOREIGN KEY (`requirements_id`) REFERENCES `requirements` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`
