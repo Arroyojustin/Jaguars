@@ -84,7 +84,6 @@
     <!--START::CRUD AJAX FUNCTIONS-->
     <script src="./crud-ajax/training.js"></script>
     <script src="./crud-ajax/retrieve-required.js"></script>
-
     
 </body>
 </html>

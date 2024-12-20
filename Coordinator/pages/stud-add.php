@@ -1,5 +1,17 @@
 <?php
 include('controller/sport-cat.php'); // Include the functions file
+include('./../dbconn.php'); // Include the database connection
+
+// Fetch approved students' names from the action table
+$sql = "SELECT name FROM action WHERE status = 'approve'";
+$result = $conn->query($sql);
+$approvedStudents = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $approvedStudents[] = $row['name'];
+    }
+}
 ?>
 
 <div class="container-fluid p-0 m-0" id="sports" style="display: none;">
@@ -8,9 +20,21 @@ include('controller/sport-cat.php'); // Include the functions file
         <div class="row">
             <!-- Left Section: Coaches -->
             <div class="col-md-4">
-                <div class="card shadow-container mb-4"> <!-- Added mb-4 to add spacing -->
+                <div class="card shadow-container mb-4">
                     <div class="card-body">
-                        <h5 class="card-title underline mb-3" style="border-bottom: 1px solid #000;">Actions</h5>
+                        <h5 class="card-title underline mb-3" style="border-bottom: 1px solid #000;">Approved</h5>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <?php
+                            // Display approved student names as buttons in the actions container
+                            if (!empty($approvedStudents)) {
+                                foreach ($approvedStudents as $student) {
+                                    echo "<li><button class='btn btn-outline-success w-100 mb-2'>$student</button></li>";
+                                }
+                            } else {
+                                echo "<li>No approved students yet.</li>";
+                            }
+                            ?>
+                        </ul>
                     </div>
                 </div>
 
@@ -38,7 +62,6 @@ include('controller/sport-cat.php'); // Include the functions file
                 </div>
             </div>
 
-
             <!-- Right Section: Students -->
             <div class="col-md-8">
                 <div class="card shadow-container">
@@ -48,7 +71,7 @@ include('controller/sport-cat.php'); // Include the functions file
                         <!-- stud-add.php Form -->
                         <form id="studAddForm">
                             <div class="row mb-3">
-                                <div class="col-md-6 ">
+                                <div class="col-md-6">
                                     <label for="firstName" class="form-label">First Name</label>
                                     <input type="text" class="form-control" id="firstName" required>
                                 </div>
@@ -81,7 +104,7 @@ include('controller/sport-cat.php'); // Include the functions file
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <label for="height" class="form-label">Height (cm)</label>
-                                 <input type="number" class="form-control" id="height" min="0" step="0.01" required>
+                                    <input type="number" class="form-control" id="height" min="0" step="0.01" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="weight" class="form-label">Weight (kg)</label>
@@ -103,7 +126,6 @@ include('controller/sport-cat.php'); // Include the functions file
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-outline-primary" id="submitStudentButton">Submit</button>
-                            <!-- <button class="btn btn-secondary" onclick="showSection(event, 'sports')">Back</button> -->
                         </form>
                     </div>
                 </div>
@@ -119,23 +141,15 @@ function calculateBMI() {
     const weight = parseFloat(document.getElementById('weight').value);
     const bmiInput = document.getElementById('bmi');
 
-    // Check if both height and weight are provided
     if (height > 0 && weight > 0) {
-        // Convert height from cm to meters
         const heightInMeters = height / 100;
-
-        // Calculate BMI
         const bmi = weight / (heightInMeters * heightInMeters);
-
-        // Set the BMI value to the input field
         bmiInput.value = bmi.toFixed(2);
     } else {
-        // If height or weight is invalid, clear the BMI field
         bmiInput.value = '';
     }
 }
 
-// Event listeners for height and weight fields to calculate BMI on input change
 document.getElementById('height').addEventListener('input', calculateBMI);
 document.getElementById('weight').addEventListener('input', calculateBMI);
 </script>
