@@ -1,32 +1,49 @@
+<?php
+include './../dbconn.php';
+?>
+
 <div class="container-fluid p-0 m-0" id="add-sport" style="display: none;">
     <div class="container mt-1">
         <div class="row mb-3"></div>
         <div class="row">
-            <div class="col-md-4">
+            <!-- Sports and Roles List Container -->
+            <div class="col-md-6">
                 <!-- Add Sport Button -->
                 <button id="addSportButton" class="btn btn-outline-success mb-3 top-corner" data-bs-toggle="modal" data-bs-target="#addSportModal">Add Sport</button>
 
                 <!-- Sports List Container -->
-                <div class="card shadow-container">
+                <div class="card shadow-container mb-4">
                     <div class="card-body">
                         <h5 class="card-title underline mb-3">Sports</h5>
-                        <div id="sportsContainer" class="d-flex justify-content-center flex-wrap">
-                            <!-- List of sports will be displayed here -->
+                        <div id="sportsContainer" class="d-flex flex-column">
+                            <?php
+                            $query = "SELECT id, sport_name FROM sports";
+                            $result = $conn->query($query);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<button class='btn btn-outline-secondary mb-2 sport-button' data-id='" . $row['id'] . "'>" . htmlspecialchars($row['sport_name']) . "</button>";
+                                }
+                            } else {
+                                echo "<p>No sports added yet.</p>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
 
                 <!-- Role List Container -->
-                <div class="card shadow-container mt-4">
+                <div class="card shadow-container">
                     <div class="card-body">
                         <h5 class="card-title underline mb-3">Roles</h5>
-                        <div id="rolesContainer" class="d-flex justify-content-center flex-wrap">
-                            <!-- List of roles will be displayed here -->
+                        <div id="rolesContainer" class="d-flex flex-column">
+                            <p>Select a sport to view its positions.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+
+            <!-- Coach Information Container -->
+            <div class="col-md-6">
                 <div class="card shadow-container">
                     <div class="card-body">
                         <h5 class="card-title underline mb-3">Coach Information</h5>
@@ -42,15 +59,19 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="middleInitial" class="form-label">Middle Initial</label>
                                     <input type="text" class="form-control" id="middleInitial" required>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="gender" class="form-label">Gender</label>
-                                    <input type="text" class="form-control" id="gender" required>
+                                    <select class="form-select" id="gender" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="phoneNumber" class="form-label">Phone Number</label>
                                     <input type="text" class="form-control" id="phoneNumber" required>
                                 </div>
@@ -124,7 +145,3 @@
         </div>
     </div>
 </div>
-
-
-
-
