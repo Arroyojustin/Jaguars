@@ -107,11 +107,24 @@
                         <label for="sport_name" class="form-label">Sport Name</label>
                         <input type="text" class="form-control" id="sport_name" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="sport_name" required>
+                        <button type="button" class="btn btn-outline-primary mt-2" id="addPositionBtn">Add Position</button>
+                    </div>
+
+                    <div class="mt-3">
+                        <h5>Added Positions</h5>
+                        <ul id="positionList">
+                            <!-- Positions will appear here -->
+                        </ul>
+                    </div>
                     <button type="submit" class="btn btn-success">Add</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 

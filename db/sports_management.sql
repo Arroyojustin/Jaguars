@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2024 at 07:59 AM
+-- Generation Time: Dec 21, 2024 at 07:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,15 @@ CREATE TABLE `action` (
   `status` enum('approve','rejected') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `action`
+--
+
+INSERT INTO `action` (`id`, `requirements_id`, `name`, `status`) VALUES
+(9, 5, 'leif nazario', 'approve'),
+(10, 6, 'Albert Alias', 'approve'),
+(14, 4, 'Justin randolf Arroyo', 'approve');
+
 -- --------------------------------------------------------
 
 --
@@ -59,10 +68,9 @@ CREATE TABLE `requirements` (
 --
 
 INSERT INTO `requirements` (`id`, `first_name`, `last_name`, `student_id`, `gender`, `sport_category`, `height`, `weight`, `bmi`, `phone_number`, `health_protocol`) VALUES
-(1, 'bryan', 'custodio', '1-210134', 'male', 'Basketball', 167.00, 55.00, 19.72, '09369007677', 'none'),
-(3, 'Aaron', 'Tibayan', '1-999999', 'male', 'volleyball', 172.00, 62.00, 20.96, '099999999999', 'mataba lang'),
 (4, 'Justin randolf', 'Arroyo', '1-234567', 'male', 'Basketball', 167.00, 55.00, 19.72, '097264872622', 'None'),
-(5, 'leif', 'nazario', '1-222222', 'male', 'volleyball', 167.00, 57.00, 20.44, '0988888888', 'none');
+(5, 'leif', 'nazario', '1-222222', 'male', 'volleyball', 167.00, 57.00, 20.44, '0988888888', 'none'),
+(6, 'Albert', 'Alias', '1-2333443', 'male', 'Basketball', 167.00, 59.00, 21.16, '0923726482', 'None');
 
 -- --------------------------------------------------------
 
@@ -72,16 +80,17 @@ INSERT INTO `requirements` (`id`, `first_name`, `last_name`, `student_id`, `gend
 
 CREATE TABLE `sports` (
   `id` int(11) NOT NULL,
-  `sport_name` varchar(255) NOT NULL
+  `sport_name` varchar(255) NOT NULL,
+  `position` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sports`
 --
 
-INSERT INTO `sports` (`id`, `sport_name`) VALUES
-(1, 'Basketball'),
-(9, 'volleyball');
+INSERT INTO `sports` (`id`, `sport_name`, `position`) VALUES
+(1, 'Basketball', ''),
+(9, 'volleyball', '');
 
 -- --------------------------------------------------------
 
@@ -157,13 +166,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `action`
 --
 ALTER TABLE `action`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sports`
