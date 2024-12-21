@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2024 at 07:32 AM
+-- Generation Time: Dec 21, 2024 at 08:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -81,16 +81,16 @@ INSERT INTO `requirements` (`id`, `first_name`, `last_name`, `student_id`, `gend
 CREATE TABLE `sports` (
   `id` int(11) NOT NULL,
   `sport_name` varchar(255) NOT NULL,
-  `position` varchar(255) NOT NULL
+  `positions` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sports`
 --
 
-INSERT INTO `sports` (`id`, `sport_name`, `position`) VALUES
-(1, 'Basketball', ''),
-(9, 'volleyball', '');
+INSERT INTO `sports` (`id`, `sport_name`, `positions`) VALUES
+(9, 'volleyball', ''),
+(16, 'Basketball', 'Point Guard, Shooting Guard, Small Forward, Power Forward, Center');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `lastname`, `firstname`, `middle_initial`, `student_no`, `weight`, `height`, `bmi`, `bloodtype`, `phone_no`, `email`, `password`, `user_type`, `gender`, `civil_status`, `profile_photo`, `sports_id`) VALUES
 (1, 'Lleve', 'Shelalin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin@edu.ph', '$2y$10$2ey6fmYSA4xnxIPVp2qRG.Gqt1k1BdGNF7fvBR1835GpQfSSABtVq', 'admin', 'female', 'married', NULL, NULL),
 (7, 'Perez', 'Jerome', '', NULL, NULL, NULL, NULL, NULL, '', 'coor@edu.ph', '$2y$10$zpyfExl.dISoTv65SkzIzOgQsxw/ON3YgLwjnwRB3osJcuhe3yE6u', 'coordinator', 'male', 'single', NULL, NULL),
-(19, 'Pablo', 'Lucas', 'g', NULL, NULL, NULL, NULL, NULL, '09068377106', 'admin@edu.ph', '$2y$10$oTCH5JsNxJ3rsTuaz8nYpeiuio/.vAmCz3aCbwLC3Gh8uWrf46.6K', 'coach', 'male', NULL, NULL, 1),
+(19, 'Pablo', 'Lucas', 'g', NULL, NULL, NULL, NULL, NULL, '09068377106', 'admin@edu.ph', '$2y$10$oTCH5JsNxJ3rsTuaz8nYpeiuio/.vAmCz3aCbwLC3Gh8uWrf46.6K', 'coach', 'male', NULL, NULL, NULL),
 (20, 'hernandez', 'tania', 'g', NULL, NULL, NULL, NULL, NULL, '09369007677', 'admin@edu.ph', '$2y$10$nmusI3hoZX7s8Y9.YhGKZOLVovcKwZ4KhQzlllSQJ0LRHK0dYRcUG', 'coach', 'male', NULL, NULL, 9);
 
 --
@@ -178,7 +178,7 @@ ALTER TABLE `requirements`
 -- AUTO_INCREMENT for table `sports`
 --
 ALTER TABLE `sports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
