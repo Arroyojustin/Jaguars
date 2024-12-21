@@ -108,23 +108,23 @@
                         <input type="text" class="form-control" id="sport_name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="position" class="form-label">Position</label>
-                        <input type="text" class="form-control" id="sport_name" required>
-                        <button type="button" class="btn btn-outline-primary mt-2" id="addPositionBtn">Add Position</button>
+                        <label for="position_input" class="form-label">Add Position</label>
+                        <input type="text" class="form-control" id="position_input">
+                        <button type="button" class="btn btn-primary mt-2" id="addPositionBtn">Add Position</button>
                     </div>
-
                     <div class="mt-3">
-                        <h5>Added Positions</h5>
-                        <ul id="positionList">
-                            <!-- Positions will appear here -->
+                        <h5>Positions</h5>
+                        <ul id="positionList" class="list-group">
+                            <!-- Dynamically added positions will appear here -->
                         </ul>
                     </div>
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success mt-3">Add Sport</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 
 

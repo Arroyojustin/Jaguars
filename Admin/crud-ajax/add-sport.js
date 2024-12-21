@@ -1,85 +1,61 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to fetch sports and populate the dropdown and container
-    function fetchSports() {
-        fetch('controller/add-sport.php', { method: 'GET' })
-            .then(response => response.json())
-            .then(data => {
-                const sportCategory = document.getElementById('sportCategory');
-                const sportsContainer = document.getElementById('sportsContainer'); // Sports container
-                sportCategory.innerHTML = '<option value="" disabled selected>Select a Category</option>';
-                sportsContainer.innerHTML = ''; // Clear container before adding new items
-                
-                data.forEach(sport => {
-                    // Add to dropdown
-                    const option = document.createElement('option');
-                    option.value = sport.toLowerCase();
-                    option.textContent = sport;
-                    sportCategory.appendChild(option);
-                    
-                    // Add to sports container (as clickable button)
-                    const sportButton = document.createElement('button');
-                    sportButton.className = 'btn btn-outline-secondary m-2';  // Secondary outline button style
-                    sportButton.textContent = sport;
-                    sportButton.type = 'button'; // Set the button type to prevent form submission
+    const positionList = [];
+    const positionListElement = document.getElementById('positionList');
+    const positionInput = document.getElementById('position_input');
+    const addPositionBtn = document.getElementById('addPositionBtn');
 
-                    // Add click event to the sport button
-                    sportButton.addEventListener('click', function () {
-                        alert(`You clicked on ${sport}!`);
-                    });
+    // Add position to the list
+    addPositionBtn.addEventListener('click', function () {
+        const position = positionInput.value.trim();
+        if (position && !positionList.includes(position)) {
+            positionList.push(position);
 
-                    sportsContainer.appendChild(sportButton);
-                });
-            })
-            .catch(error => console.error('Error fetching sports:', error));
-    }
+            // Update UI
+            const li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between align-items-center';
+            li.textContent = position;
 
-    // Call fetchSports on page load
-    fetchSports();
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'btn btn-sm btn-danger';
+            removeBtn.textContent = 'Remove';
+            removeBtn.addEventListener('click', function () {
+                positionList.splice(positionList.indexOf(position), 1);
+                li.remove();
+            });
 
-    // Add new sport
+            li.appendChild(removeBtn);
+            positionListElement.appendChild(li);
+            positionInput.value = '';
+        }
+    });
+
+    // Submit form
     document.getElementById('addSportForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        const sportName = document.getElementById('sport_name').value;
+        const sportName = document.getElementById('sport_name').value.trim();
 
-        fetch('controller/add-sport.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ sport_name: sportName })
-        })
+        if (sportName) {
+            fetch('controller/add-sportss.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ 
+                    sport_name: sportName, 
+                    positions: positionList.join(', ') // Send positions as a comma-separated string
+                })
+            })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // SweetAlert success notification
-                    Swal.fire({
-                        toast: true,
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Sport added successfully',
-                        timer: 2000,
-                        background: '#ab9f6ca',
-                        iconColor: '#a2e7d32',
-                        color: '#a155724',
-                        showConfirmButton: false // Message returned from the server
-                    }).then(() => {
-                        document.getElementById('sport_name').value = ''; // Clear input
-                        fetchSports(); // Refresh the sports dropdown and container
-                        
-                        // Close the modal if it's being used (optional)
-                        const modal = document.getElementById('addSportModal');
-                        if (modal) {
-                            const modalInstance = bootstrap.Modal.getInstance(modal);
-                            modalInstance.hide(); // Close the modal using Bootstrap Modal API
-                        }
-                    });
+                    alert('Sport and positions added successfully!');
+                    // Clear modal inputs
+                    positionList.length = 0; 
+                    positionListElement.innerHTML = '';
+                    document.getElementById('sport_name').value = '';
                 } else {
-                    // SweetAlert error notification
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: data.message,  // Message returned from the server
-                    });
+                    alert('Error: ' + data.message);
                 }
             })
             .catch(error => console.error('Error adding sport:', error));
+        }
     });
 });
