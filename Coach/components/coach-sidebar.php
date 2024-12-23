@@ -10,15 +10,15 @@
             <span>Home</span>
         </a>
         <a href="#" class="sidebar-link" onclick="showSection(event, 'required')">
-           <i class="fa-solid fa-clipboard-list x0.3"></i>
+           <i class='bx bx-envelope-open'></i>
             <span>requirements</span>
         </a>
         <a href="#" class="sidebar-link" onclick="showSection(event, 'strong')">
-              <i class="fa-solid fa-person-walking x0.3"></i>
+           <i class='bx bx-calendar' ></i>
             <span>Schedule</span>
         </a>
         <a href="#" class="sidebar-link" onclick="showSection(event, 'athlete')">
-               <i class="fa-solid fa-users x0.1"></i>
+            <i class='bx bx-list-ul' ></i>
             <span>List</span>
         </a>
     </nav>

@@ -11,7 +11,7 @@
         </a>
         <a href="#" class="sidebar-link" onclick="showSection(event, 'attendance')">
             <i class="bx bx-user-check"></i>
-            <span>Attendance</span>
+            <span>Record List</span>
         </a>
         <a href="#" class="sidebar-link" onclick="showSection(event, 'sports')">
             <i class='bx bx-group'></i>

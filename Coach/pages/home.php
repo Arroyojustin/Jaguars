@@ -5,5 +5,12 @@
       <input type="text" class="form-control mb-2 mb-sm-0 w-100 w-sm-75" placeholder="Enter something...">
       <button class="btn btn-primary ms-sm-2">Post</button>
     </div>
+    <!-- Notification Container -->
+    <div class="notification-container mt-4">
+      <!-- Sample Notification Message -->
+      <div class="alert alert-info" role="alert">
+        This is a sample notification message.
+      </div>
+    </div>
   </div>
 </div>
