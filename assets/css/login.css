@@ -211,6 +211,8 @@ p {
     background: #0056b3;
 }
 
+
+
 /* Responsive Mobile View */
 @media (max-width: 768px) {
     .login-container {
@@ -291,4 +293,17 @@ p {
         margin-top: 10px;
         margin-bottom: 20px;
     }
+}
+
+.tryout-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 274px;
+    text-align: center; /* Center the text horizontally */
+    padding: 10px 0; /* Optional: Add some space around the text */
+    color: white; /* Optional: Change text color */
+    font-size: medium;
+    cursor: pointer;
 }

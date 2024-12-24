@@ -17,7 +17,6 @@
             <div class="text-container">
                 <h1>ASIATECH</h1>
                 <p>Student Athlete Progress Portal</p>
-                
             </div>
             <div class="logo-container">
                 <img src="./Upload/ASAPP.png" alt="Logo 1" class="logo">
@@ -26,21 +25,20 @@
         </div>
         <!-- Right Section with Login Form -->
         <div class="right-section">
-        <form class="login-form" id="loginForm" method="POST" action="">
-    <input type="email" name="email" placeholder="Email" required>
-    <div class="password-container">
-        <input type="password" name="password" id="password" placeholder="Password" required>
-        <label for="show-password">
-            <input type="checkbox" id="show-password"> Show Password
-        </label>
-    </div>
-    <button type="submit">LOGIN</button>
-    <!-- New Text Section -->
-    <p style="text-align: center; margin-top: 15px; font-size: 12px; color: #555;">
-        By logging in, you agree to the <a href="#" style="color: #007bff; text-decoration: none;">Terms and Conditions</a> of ASIATECH.
-    </p>
-</form>
-
+            <form class="login-form" id="loginForm" method="POST" action="">
+                <input type="email" name="email" placeholder="Email" required>
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <label for="show-password">
+                        <input type="checkbox" id="show-password"> Show Password
+                    </label>
+                </div>
+                <button type="submit">LOGIN</button>
+            </form>
+            <!-- Added Text at the Bottom -->
+            <div class="tryout-text">
+                Wanna join the tryout?
+            </div>
         </div>
     </div>
 
