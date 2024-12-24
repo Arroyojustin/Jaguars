@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root"; // Your MySQL username
-$password = ""; // No password
+$password = "root"; // No password
 $dbname = "sports_management";
 
 // Create connection
