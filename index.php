@@ -17,6 +17,7 @@
             <div class="text-container">
                 <h1>ASIATECH</h1>
                 <p>Student Athlete Progress Portal</p>
+                
             </div>
             <div class="logo-container">
                 <img src="./Upload/ASAPP.png" alt="Logo 1" class="logo">
