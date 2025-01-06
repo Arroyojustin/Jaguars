@@ -1,0 +1,26 @@
+body.custom-scan-body { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+} 
+
+.custom-scan-container { 
+    text-align: center; 
+}
+
+.custom-scan-container h1.custom-scan-h1 { 
+    margin-bottom: 20px; 
+} 
+
+.custom-scan-container img.custom-scan-img { 
+    width: 200px; 
+    height: 200px; 
+} 
+
+.custom-scan-container p.custom-scan-p { 
+    margin-top: 20px; 
+}

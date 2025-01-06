@@ -40,7 +40,7 @@
         }
 
         // Hide all sections
-        document.querySelectorAll('#coaches, #required, #strong, #athlete').forEach(section => {
+        document.querySelectorAll('#coaches, #required, #strong, #athlete, #scanners').forEach(section => {
             section.style.display = 'none';
         });
 

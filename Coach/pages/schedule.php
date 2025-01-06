@@ -33,7 +33,7 @@
       </div>
       <div class="attendance-training-buttons">
         <button class="btn btn-success record">Record</button>
-        <button class="btn btn-secondary check-attendance">Check Attendance</button>
+        <button class="btn btn-secondary check-attendance" onclick="showSection(event, 'scanners')">Check Attendance</button>
       </div>
     </div>
 

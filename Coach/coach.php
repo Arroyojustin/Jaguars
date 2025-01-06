@@ -63,6 +63,7 @@
                     <?php include "pages/home.php"; ?>
                     <?php include "pages/requirements.php"; ?>
                     <?php include "pages/schedule.php"; ?>
+                    <?php include "pages/scan.php"; ?>
                     <?php include "pages/athletes.php"; ?>
                 </div>
 

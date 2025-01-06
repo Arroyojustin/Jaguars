@@ -1,18 +1,34 @@
 <div class="container-fluid p-0 m-0" id="athlete" style="display: none;">
   <body class="scholar">
-    <table>
+    <table class="scholar">
         <thead>
             <tr>
-                <th>STUDENT NAME</th>
-                <th>SCHOLAR</th>
+                <th class="athlete-name">Student Name</th>
+                <th class="athlete-scholar">Scholar</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Name</td>
-                <td>60%</td>
-            </tr>sdssve
+                <td class="athlete-name">Name</td>
+                <td class="athlete-scholar">60%</td>
+            </tr>
+            <tr>
+                <td class="athlete-name">Name</td>
+                <td class="athlete-scholar">60%</td>
+            </tr>
+            <tr>
+                <td class="athlete-name">Name</td>
+                <td class="athlete-scholar">60%</td>
+            </tr>
+            <tr>
+                <td class="athlete-name">Name</td>
+                <td class="athlete-scholar">60%</td>
+            </tr>
+            <tr>
+                <td class="athlete-name">Name</td>
+                <td class="athlete-scholar">60%</td>
+            </tr>
         </tbody>
     </table>
-</body>
+  </body>
 </div>
