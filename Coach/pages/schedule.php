@@ -4,7 +4,7 @@
       <div class="attendance-training-tab">Training</div>
     </div>
     <div class="attendance-training-dropdown">
-      <label for="attendance-status"></label>
+      <label for="attendance-status">Out</label>
       <select id="attendance-status">
         <option value="out">Out</option>
         <option value="in">In</option>
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="attendance-training-buttons">
+    <div class="attendance-training-buttons d-flex justify-content-between">
       <button class="btn btn-success record">Record</button>
       <button class="btn btn-secondary check-attendance">Check Attendance</button>
     </div>

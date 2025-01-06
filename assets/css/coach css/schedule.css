@@ -1,91 +1,81 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Container for the page */
-  .attendance-training-container {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 15px;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full viewport height */
-  }
+/* Container for the page */
+.attendance-training-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+}
 
-  /* Tabs styling */
-  .attendance-training-tabs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
+/* Tabs styling */
+.attendance-training-tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 10px;
+}
 
-  .attendance-training-tabs div {
-    padding: 10px;
-    cursor: pointer;
-  }
+.attendance-training-tabs div {
+  padding: 10px;
+  cursor: pointer;
+}
 
-  .attendance-training-tabs div.active {
-    font-weight: bold;
-    border-bottom: 2px solid black;
-  }
+.attendance-training-tabs div.active {
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
 
-  /* Dropdown styling */
-  .attendance-training-dropdown {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+/* Dropdown styling */
+.attendance-training-dropdown {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .attendance-training-dropdown select {
-    padding: 5px;
-    font-size: 16px;
-  }
+.attendance-training-dropdown select {
+  padding: 5px;
+  font-size: 16px;
+}
 
-  /* Table layout */
-  /* .attendance-training-table {
-    flex-grow: 1;
-    overflow-y: auto; 
-  } */
+/* Table layout */
+.attendance-training-table {
+  width: 100%;
+}
 
-  .attendance-training-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
+.attendance-training-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-  .attendance-training-name {
-    flex: 1;
-    text-align: left;
-    font-weight: bold;
-  }
+.attendance-training-name {
+  flex: 1;
+  text-align: left;
+  font-weight: bold;
+}
 
-  .attendance-training-options button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
+.attendance-training-options button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-  .attendance-training-options button.P {
-    background-color: green;
-  }
+.attendance-training-options button.P {
+  background-color: green;
+}
 
-  .attendance-training-options button.A,
-  .attendance-training-options button.L {
-    background-color: gray;
-  }
-
-  /* Buttons at the bottom */
-  .attendance-training-buttons {
-    margin-top: 180px; /* Push buttons to the bottom */
-    display: flex;
-    justify-content: space-between;
-  }
+.attendance-training-options button.A,
+.attendance-training-options button.L {
+  background-color: gray;
+}
